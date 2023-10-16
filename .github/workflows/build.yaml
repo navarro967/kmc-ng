@@ -3,7 +3,8 @@ name: Build
 run-name: Build
 
 on:
-  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   canary-full-flow:
