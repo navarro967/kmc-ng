@@ -10,3 +10,4 @@ jobs:
     uses: kaltura/ovp-pipelines-pub/.github/workflows/build_npm.yaml@master-VCP-14497
     with:
       build-command: 'build -- --prod'
+      name: kmc-ng
