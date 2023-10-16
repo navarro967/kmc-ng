@@ -1,0 +1,12 @@
+## Build
+name: Build
+run-name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  canary-full-flow:
+    uses: kaltura/ovp-pipelines-pub/.github/workflows/build_npm.yaml@master-VCP-14497
+    with:
+      build-command: 'build -- --prod'
