@@ -7,28 +7,25 @@ on:
     types: [published]
 
 jobs:
-  get-standalone-commit:
-    name: Get standalone commit
-    runs-on: ubuntu-latest
-    outputs:
-      standalone-commit: ${{ steps.get-commit.outputs.standalone-commit }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-          sparse-checkout: |
-            kaltura-ws.json
-          sparse-checkout-cone-mode: false
-      - name: Get commit
-        id: get-commit
-        run: |
-          COMMIT=$(jq -r '.commands.bookmark.standalone[]' kaltura-ws.json)
-          echo "standalone-commit=${COMMIT}" >> $GITHUB_OUTPUT
+  # get-standalone-commit:
+  #   name: Get standalone commit
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     standalone-commit: ${{ steps.get-commit.outputs.standalone-commit }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ github.ref }}
+  #         sparse-checkout: |
+  #           kaltura-ws.json
+  #         sparse-checkout-cone-mode: false
+  #     - name: Get commit
+  #       id: get-commit
+  #       run: |
+  #         COMMIT=$(jq -r '.commands.bookmark.standalone[]' kaltura-ws.json)
+  #         echo "standalone-commit=${COMMIT}" >> $GITHUB_OUTPUT
   build-npm:
     uses: kaltura/ovp-pipelines-pub/.github/workflows/build_npm.yaml@master-VCP-14497
-    needs: get-standalone-commit
     with:
-      build-ref: ${{ needs.get-standalone-commit.outputs.standalone-commit }}
-      build-command: 'build -- --prod'
-      name: kmc-ng
+      build-steps: '["build -- --prod"]'
