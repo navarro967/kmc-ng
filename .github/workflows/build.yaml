@@ -26,6 +26,6 @@ jobs:
   #         COMMIT=$(jq -r '.commands.bookmark.standalone[]' kaltura-ws.json)
   #         echo "standalone-commit=${COMMIT}" >> $GITHUB_OUTPUT
   build-npm:
-    uses: kaltura/ovp-pipelines-pub/.github/workflows/build_npm.yaml@master-VCP-14497
+    uses: kaltura/ovp-pipelines-pub/.github/workflows/app_release.yaml@master-VCP-14497
     with:
       build-steps: '["build -- --prod"]'
