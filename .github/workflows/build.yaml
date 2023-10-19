@@ -1,6 +1,6 @@
 ## Build
-name: Build
-run-name: Build
+name: Publish Release
+run-name: Publish Release
 
 on:
   release:
@@ -25,7 +25,7 @@ jobs:
   #       run: |
   #         COMMIT=$(jq -r '.commands.bookmark.standalone[]' kaltura-ws.json)
   #         echo "standalone-commit=${COMMIT}" >> $GITHUB_OUTPUT
-  build-npm:
+  app_release:
     uses: kaltura/ovp-pipelines-pub/.github/workflows/app_release.yaml@master-VCP-14497
     with:
       build-steps: '["build -- --prod"]'
