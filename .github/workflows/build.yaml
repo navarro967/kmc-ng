@@ -29,3 +29,4 @@ jobs:
     uses: kaltura/ovp-pipelines-pub/.github/workflows/app_release.yaml@master-VCP-14497
     with:
       build-steps: '["build -- --prod"]'
+      upload-asset: true
